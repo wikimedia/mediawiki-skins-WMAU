@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sam Wilson"
+		]
+	},
+	"skinname-wikimediaaustralia": "{{optional}}",
+	"wikimediaaustralia-desc": "{{desc|what=skin|name=WikimediaAustralia|url=https://www.mediawiki.org/wiki/Skin:WikimediaAustralia}}"
+}

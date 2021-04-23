@@ -1,0 +1,121 @@
+@import 'action-drawer';
+@import 'feathericons';
+
+body {
+	padding: 0;
+	margin: 0;
+	font: 18px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif;
+	color: #444;
+}
+
+.skin-wmau-container {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+header,
+footer {
+	clear: both;
+	background-color: #faf7f7;
+}
+
+header .skin-wmau-container {
+	display: flex;
+
+	h1#sitename {
+		flex: 1;
+		margin: 0;
+		padding: 0;
+
+		a {
+			display: block;
+			background-image: url( ../images/logo-horizontal.svg );
+			background-repeat: no-repeat;
+			background-position: left center;
+			width: 243.48px;
+			height: 75.313px;
+		}
+
+		a span {
+			visibility: hidden;
+		}
+	}
+
+	nav {
+		flex: 3;
+		align-self: center;
+	}
+
+	a {
+		color: #767676;
+	}
+
+	a:hover {
+		color: #000;
+		text-decoration: none;
+	}
+}
+
+footer .skin-wmau-container {
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+	padding: 0;
+	font-size: 92%;
+
+	a {
+		color: inherit;
+	}
+
+	section {
+		flex: 1;
+	}
+
+	.skin-wmau-footer-left {
+		display: flex;
+		line-height: 1em;
+		align-items: center;
+
+		.skin-wmau-contact {
+			margin-left: 1em;
+		}
+	}
+
+	.skin-wmau-footer-right {
+		text-align: right;
+	}
+}
+
+ul.skin-wmau-list-horizontal {
+	list-style-type: none;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	text-align: right;
+
+	li {
+		display: inline-block;
+		margin-left: 1em;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: #0066bf;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+p.subtitle {
+	font-size: smaller;
+	opacity: 0.7;
+}
+
+h1,
+h2,
+h3 {
+	line-height: 1.2;
+}

@@ -1,0 +1,40 @@
+{
+	"name": "WikimediaAustralia",
+	"version": "0.1.0",
+	"author": [
+		"Caddie Brain",
+		"Sam Wilson"
+	],
+	"url": "https://www.mediawiki.org/wiki/Skin:WikimediaAustralia",
+	"descriptionmsg": "wikimediaaustralia-desc",
+	"namemsg": "skinname-wikimediaaustralia",
+	"license-name": "GPL-3.0+",
+	"type": "skin",
+	"ValidSkinNames": {
+		"wikimediaaustralia": "WikimediaAustralia"
+	},
+	"MessagesDirs": {
+		"WikimediaAustralia": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"skins.wikimediaaustralia": {
+			"styles": "less/style.less"
+		}
+	},
+	"ResourceModuleSkinStyles": {
+		"wikimediaaustralia": {
+			"+ext.echo.styles.badge": "resources/extensions/Echo.less"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources/",
+		"remoteSkinPath": "WikimediaAustralia/resources/"
+	},
+	"AutoloadClasses": {
+		"SkinWikimediaAustralia": "includes/SkinWikimediaAustralia.php",
+		"WikimediaAustraliaTemplate": "includes/WikimediaAustraliaTemplate.php"
+	},
+	"manifest_version": 2
+}

@@ -1,0 +1,37 @@
+@skin-wmau-green: #3F5A54;
+
+body {
+	width: 100%;
+	overflow-x: hidden;
+}
+
+aside.skin-wmau-action-drawer {
+	position: absolute;
+	right: -180px;
+	width: 205px;
+	border: 1px solid @skin-wmau-green;
+	border-right: 0;
+	background-color: #f7fdfb;
+	border-radius: 4px 0 0 4px;
+	box-shadow: 0 0 15px 4px #ccc;
+	padding: 5px;
+
+	a {
+		opacity: 0.3;
+		color: @skin-wmau-green;
+	}
+
+	&:hover {
+		right: 0;
+
+		a {
+			opacity: 1;
+		}
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+}
