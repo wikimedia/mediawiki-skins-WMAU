@@ -21,6 +21,11 @@
 	"ResourceModules": {
 		"skins.wikimediaaustralia": {
 			"styles": "less/style.less"
+		},
+		"skins.wikimediaaustralia.js": {
+			"packageFiles": [
+				"js/index.js"
+			]
 		}
 	},
 	"ResourceModuleSkinStyles": {

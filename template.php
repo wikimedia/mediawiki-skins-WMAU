@@ -15,11 +15,21 @@
 		<nav>
 			<ul class="skin-wmau-list-horizontal">
 				<?php echo $this->getMenuItem( [ 'page' => 'About us' ] ); ?>
-				<?php echo $this->getMenuItem( [ 'page' => 'What&rsquo;s on' ] ); ?>
+				<?php echo $this->getMenuItem( [ 'page' => "What's on", 'text' => 'What&rsquo;s on' ] ); ?>
 				<?php echo $this->getMenuItem( [ 'page' => 'Projects & news' ] ); ?>
 				<?php echo $this->getMenuItem( [ 'page' => 'Governance' ] ); ?>
 				<?php echo $this->getMenuItem( [ 'page' => 'Contact' ] ); ?>
+				<?php echo $this->getMenuItem( [
+					'page' => 'Special:Search', 'icon' => 'search', 'class' => 'skin-wmau-search',
+				] ); ?>
 			</ul>
+			<form action="<?php $this->get( 'wgScript' ) ?>" id="searchform">
+				<?php
+				echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
+				echo $this->makeSearchInput( [ 'id' => 'searchInput', 'size' => 50 ] );
+				echo $this->makeSearchButton( 'go', [ 'id' => 'searchButton', 'class' => 'searchButton' ] );
+				?>
+			</form>
 		</nav>
 	</div>
 </header>

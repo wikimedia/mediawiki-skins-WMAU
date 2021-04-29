@@ -1,5 +1,6 @@
 @import 'action-drawer';
 @import 'feathericons';
+@import 'searchform';
 
 body {
 	padding: 0;
@@ -88,6 +89,10 @@ footer .skin-wmau-container {
 }
 
 ul.skin-wmau-list-horizontal {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	flex-wrap: wrap;
 	list-style-type: none;
 	white-space: nowrap;
 	margin: 0;
@@ -95,7 +100,6 @@ ul.skin-wmau-list-horizontal {
 	text-align: right;
 
 	li {
-		display: inline-block;
 		margin-left: 1em;
 	}
 }

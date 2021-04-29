@@ -59,7 +59,10 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 		if ( isset( $menuItem['icon'] ) ) {
 			$contents = $this->getFeatherIcon( $menuItem['icon'], $contents );
 		}
-		return Html::rawElement( 'li', [], Html::rawElement( 'a', $aParams, $contents ) );
+		$liParams = [
+			'class' => $menuItem['class'] ?? '',
+		];
+		return Html::rawElement( 'li', $liParams, Html::rawElement( 'a', $aParams, $contents ) );
 	}
 
 	/**
