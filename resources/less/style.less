@@ -1,3 +1,5 @@
+@skin-wmau-green: #3F5A54;
+@skin-wmau-lightgreen: #f7fdfb;
 @import 'action-drawer';
 @import 'feathericons';
 @import 'searchform';
@@ -122,4 +124,31 @@ h1,
 h2,
 h3 {
 	line-height: 1.2;
+}
+
+.mw-editsection {
+	font-size: 60%;
+	display: inline-block;
+	margin-left: 2em;
+	position: relative;
+	top: -3px;
+
+	a {
+		font-weight: lighter;
+		display: inline-block;
+		color: inherit;
+		border: 1px solid @skin-wmau-green;
+		background-color: @skin-wmau-lightgreen;
+		border-radius: 5px;
+		padding: 3px 8px;
+	}
+
+	a:hover {
+		text-decoration: none;
+		background-color: #efefef;
+	}
+
+	.mw-editsection-bracket {
+		display: none;
+	}
 }
