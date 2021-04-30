@@ -39,13 +39,19 @@
 		<ul>
 			<li class="skin-wmau-feathericons-tool"><span>Tools</span></li>
 			<?php
+			// @TODO Build this whole section better than this.
 			$links = array_merge(
 				$this->get( 'content_actions' ),
 				$this->getNavUrls(),
 				$this->get( 'sidebar' )['TOOLBOX'],
 				$this->getSkin()->getPersonalToolsForMakeListItem( $this->get( 'personal_urls' ) )
 			);
-			unset( $links['logout'] );
+
+			unset(
+				$links['nstab-main'],
+				$links['talk'],
+				$links['logout']
+			);
 			foreach ( $links as $url => $urlDetails ) {
 				if ( is_array( $urlDetails ) ) {
 					echo $this->makeListItem( $url, $urlDetails );
@@ -57,18 +63,11 @@
 <?php } ?>
 
 <article class="mw-body skin-wmau-container">
-	<h1><?php echo $this->getTitle() ?></h1>
-
-	<?php if ( $this->data[ 'subtitle' ] ) { ?>
-		<p class="subtitle">
-			<?php echo $this->get( 'subtitle' ) ?>
-		</p>
-	<?php } ?>
-
 	<?php
+	echo $this->articleHeader();
 	$this->html( 'bodycontent' );
-	$this->html( 'catlinks' );
 	$this->html( 'dataAfterContent' );
+	echo $this->articleFooter();
 	?>
 </article>
 

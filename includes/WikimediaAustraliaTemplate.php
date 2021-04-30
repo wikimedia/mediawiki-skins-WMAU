@@ -1,5 +1,8 @@
 <?php
 
+use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MediaWikiServices;
+
 /**
  * @ingroup Skins
  */
@@ -24,10 +27,10 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 	 */
 	public function getTitle() {
 		$title = $this->getSkin()->getRelevantTitle();
-		$html = Html::element( 'span', [ 'class' => 'text' ], $title->getText() );
+		$html = Html::element( 'span', [ 'class' => 'skin-wmau-text' ], $title->getText() );
 		// Prepend the namespace if it exists and is not the File namespace.
 		if ( $title->getNsText() && $title->getNamespace() !== NS_FILE ) {
-			$html = Html::element( 'span', [ 'class' => 'ns' ], $title->getNsText() . ':' ) . ' ' . $html;
+			$html = Html::element( 'span', [ 'class' => 'skin-wmau-ns' ], $title->getNsText() . ':' ) . ' ' . $html;
 		}
 		return $html;
 	}
@@ -118,5 +121,63 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 		];
 		$span = Html::rawElement( 'span', [], $contents );
 		return Html::rawElement( 'abbr', $params, $span );
+	}
+
+	/**
+	 * @return string
+	 */
+	public function articleHeader(): string {
+		$title = $this->getSkin()->getTitle();
+		$out = '';
+
+		// Backlink for talk pages.
+		if ( $title->isTalkPage() ) {
+			$subjectPage = MediaWikiServices::getInstance()->getNamespaceInfo()->getSubjectPage( $title );
+			$out .= $this->getLinkWithIcon(
+				$subjectPage, 'wikimediaaustralia-subject-link', 'arrow-left', 'skin-wmau-subject-link'
+			);
+		}
+
+		// Main title.
+		$out .= Html::rawElement( 'h1', [], $this->getTitle() );
+
+		// Subtitle.
+		if ( $this->data[ 'subtitle' ] ) {
+			$out .= Html::rawElement( 'span', [ 'class' => 'subtitle' ], $this->get( 'subtitle' ) );
+		}
+
+		return $out;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function articleFooter(): string {
+		$title = $this->getSkin()->getTitle();
+		$out = '';
+		if ( !$title->isMainPage() && !$title->isTalkPage() && $title->canHaveTalkPage() ) {
+			// Link from the article to the talk page.
+			$out .= $this->getLinkWithIcon( $title->getTalkPageIfDefined(), 'wikimediaaustralia-talk-link',
+				'message-square', 'skin-wmau-talk-link'
+			);
+		}
+		return $out;
+	}
+
+	/**
+	 * @param LinkTarget $target
+	 * @param string $linkMessage
+	 * @param string $iconName
+	 * @param string $class
+	 * @return string
+	 */
+	public function getLinkWithIcon(
+		LinkTarget $target, string $linkMessage, string $iconName, string $class
+	): string {
+		$linkText = $this->getFeatherIcon( $iconName, '' );
+		$link = MediaWikiServices::getInstance()
+			->getLinkRenderer()
+			->makeLink( $target, new HtmlArmor( $linkText . $this->getMsg( $linkMessage )->text() ) );
+		return Html::rawElement( 'span', [ 'class' => $class ], $link );
 	}
 }
