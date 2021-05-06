@@ -23,7 +23,7 @@
 					'page' => 'Special:Search', 'icon' => 'search', 'class' => 'skin-wmau-search',
 				] ); ?>
 			</ul>
-			<form action="<?php $this->get( 'wgScript' ) ?>" id="searchform">
+			<form action="<?php echo $this->get( 'wgScript' ) ?>" id="searchform">
 				<?php
 				echo Html::hidden( 'title', $this->get( 'searchtitle' ) );
 				echo $this->makeSearchInput( [ 'id' => 'searchInput', 'size' => 50 ] );
