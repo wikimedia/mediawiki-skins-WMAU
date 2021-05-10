@@ -1,45 +1,61 @@
 {
-	"name": "WikimediaAustralia",
+	"name": "WMAU",
 	"version": "0.1.0",
 	"author": [
 		"Caddie Brain",
 		"Sam Wilson"
 	],
-	"url": "https://www.mediawiki.org/wiki/Skin:WikimediaAustralia",
-	"descriptionmsg": "wikimediaaustralia-desc",
-	"namemsg": "skinname-wikimediaaustralia",
+	"url": "https://www.mediawiki.org/wiki/Skin:WMAU",
+	"descriptionmsg": "wmau-desc",
+	"namemsg": "skinname-wmau",
 	"license-name": "GPL-3.0+",
 	"type": "skin",
 	"ValidSkinNames": {
-		"wikimediaaustralia": "WikimediaAustralia"
+		"wmau": "WMAU"
 	},
 	"MessagesDirs": {
-		"WikimediaAustralia": [
+		"WMAU": [
 			"i18n"
 		]
 	},
 	"ResourceModules": {
-		"skins.wikimediaaustralia": {
-			"styles": "less/style.less"
+		"skins.wmau": {
+			"styles": {
+				"less/style.less": {
+					"media": "screen"
+				},
+				"less/mobile.less": {
+					"media": "screen and (max-width: 750px)"
+				}
+			}
 		},
-		"skins.wikimediaaustralia.js": {
+		"skins.wmau.images": {
+			"class": "ResourceLoaderImageModule",
+			"selector": ".skin-wmau-image-{name}",
+			"images": {
+				"logo": "images/logo.svg",
+				"logo-black-small": "images/logo-black-small.svg",
+				"logo-horizontal": "images/logo-horizontal.svg"
+			}
+		},
+		"skins.wmau.js": {
 			"packageFiles": [
 				"js/index.js"
 			]
 		}
 	},
 	"ResourceModuleSkinStyles": {
-		"wikimediaaustralia": {
+		"wmau": {
 			"+ext.echo.styles.badge": "resources/extensions/Echo.less"
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources/",
-		"remoteSkinPath": "WikimediaAustralia/resources/"
+		"remoteSkinPath": "WMAU/resources/"
 	},
 	"AutoloadClasses": {
-		"SkinWikimediaAustralia": "includes/SkinWikimediaAustralia.php",
-		"WikimediaAustraliaTemplate": "includes/WikimediaAustraliaTemplate.php"
+		"SkinWMAU": "includes/SkinWMAU.php",
+		"WMAUTemplate": "includes/WMAUTemplate.php"
 	},
 	"manifest_version": 2
 }

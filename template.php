@@ -8,7 +8,8 @@
 <header>
 	<div class="skin-wmau-container">
 		<h1 id="sitename">
-			<a href="<?php echo $this->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ?>" title="">
+			<a href="<?php echo $this->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ?>"
+				class="skin-wmau-image-logo-horizontal">
 				<span><?php $this->text( 'sitename' ) ?></span>
 			</a>
 		</h1>
@@ -74,7 +75,7 @@
 <footer>
 	<div class="skin-wmau-container">
 		<section class="skin-wmau-footer-left">
-			<p><?php echo $this->getLogo(); ?></p>
+			<p class="skin-wmau-image-logo-black-small"></p>
 			<p class="skin-wmau-contact">
 				<strong>Wikimedia Australia, Inc.</strong><br>
 				<a href="mailto:contact@wikimedia.org.au">contact@wikimedia.org.au</a>

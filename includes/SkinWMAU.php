@@ -3,13 +3,13 @@
 /**
  * @ingroup Skins
  */
-class SkinWikimediaAustralia extends SkinTemplate {
+class SkinWMAU extends SkinTemplate {
 
 	/** @var string */
-	public $skinname = 'WikimediaAustralia';
+	public $skinname = 'WMAU';
 
 	/** @var string */
-	public $template = WikimediaAustraliaTemplate::class;
+	public $template = WMAUTemplate::class;
 
 	/**
 	 * Initialise the page.
@@ -17,7 +17,7 @@ class SkinWikimediaAustralia extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
-		$out->addModuleStyles( 'skins.wikimediaaustralia' );
-		$out->addModules( [ 'skins.wikimediaaustralia.js' ] );
+		$out->addModuleStyles( [ 'skins.wmau', 'skins.wmau.images' ] );
+		$out->addModules( [ 'skins.wmau.js' ] );
 	}
 }

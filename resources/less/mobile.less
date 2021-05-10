@@ -1,0 +1,42 @@
+/* Small screen display. Only loaded when screen width is less than 750px. */
+
+body {
+	font-size: 16px;
+}
+
+.skin-wmau-container {
+	max-width: 98%;
+}
+
+header .skin-wmau-container,
+footer .skin-wmau-container {
+	display: block;
+}
+
+header .skin-wmau-container h1#sitename .skin-wmau-image-logo-horizontal {
+	width: 100%;
+	background-position: center center;
+}
+
+ul.skin-wmau-list-horizontal {
+	justify-content: center;
+}
+
+.floatright,
+.tright,
+.floatleft,
+.tleft {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+.thumbinner {
+	max-width: 85% !important; // stylelint-disable-line declaration-no-important
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}

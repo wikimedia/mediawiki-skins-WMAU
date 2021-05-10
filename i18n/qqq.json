@@ -4,8 +4,8 @@
 			"Sam Wilson"
 		]
 	},
-	"skinname-wikimediaaustralia": "{{optional}}",
-	"wikimediaaustralia-desc": "{{desc|what=skin|name=WikimediaAustralia|url=https://www.mediawiki.org/wiki/Skin:WikimediaAustralia}}",
-	"wikimediaaustralia-talk-link": "Link text for subject-page footer link to the talk page.",
-	"wikimediaaustralia-subject-link": "Link text for talk-page header link back to the subject page."
+	"skinname-wmau": "{{optional}}",
+	"wmau-desc": "{{desc|what=skin|name=WMAU|url=https://www.mediawiki.org/wiki/Skin:WMAU}}",
+	"wmau-talk-link": "Link text for subject-page footer link to the talk page.",
+	"wmau-subject-link": "Link text for talk-page header link back to the subject page."
 }

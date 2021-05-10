@@ -6,10 +6,7 @@ use MediaWiki\MediaWikiServices;
 /**
  * @ingroup Skins
  */
-class WikimediaAustraliaTemplate extends BaseTemplate {
-
-	/** @var array */
-	private $skinConfig;
+class WMAUTemplate extends BaseTemplate {
 
 	/**
 	 * Outputs the entire contents of the page.
@@ -74,7 +71,7 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 	 */
 	private function getResourcesUrl( string $path ): string {
 		return $this->getSkin()->getConfig()->get( 'StylePath' )
-			. '/WikimediaAustralia/resources/'
+			. '/WMAU/resources/'
 			. ltrim( $path, '/' );
 	}
 
@@ -94,20 +91,6 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 			$out[ $name ] = $navUrl;
 		}
 		return $out;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getLogo(): string {
-		$params = [
-			'src' => $this->getResourcesUrl( 'images/logo-black-small.svg' ),
-			'alt' => 'Small black Wikimedia logo.',
-			'width' => '48.97327',
-			'height' => '49.080795',
-		];
-		$html = Html::element( 'img', $params );
-		return $html;
 	}
 
 	/**
@@ -134,7 +117,7 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 		if ( $title->isTalkPage() ) {
 			$subjectPage = MediaWikiServices::getInstance()->getNamespaceInfo()->getSubjectPage( $title );
 			$out .= $this->getLinkWithIcon(
-				$subjectPage, 'wikimediaaustralia-subject-link', 'arrow-left', 'skin-wmau-subject-link'
+				$subjectPage, 'wmau-subject-link', 'arrow-left', 'skin-wmau-subject-link'
 			);
 		}
 
@@ -157,7 +140,7 @@ class WikimediaAustraliaTemplate extends BaseTemplate {
 		$out = '';
 		if ( !$title->isMainPage() && !$title->isTalkPage() && $title->canHaveTalkPage() ) {
 			// Link from the article to the talk page.
-			$out .= $this->getLinkWithIcon( $title->getTalkPageIfDefined(), 'wikimediaaustralia-talk-link',
+			$out .= $this->getLinkWithIcon( $title->getTalkPageIfDefined(), 'wmau-talk-link',
 				'message-square', 'skin-wmau-talk-link'
 			);
 		}
