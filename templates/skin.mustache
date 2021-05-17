@@ -1,0 +1,79 @@
+<header>
+	<div class="skin-wmau-container">
+		<h1 id="sitename">
+			<a href="{{url-mainpage}}" class="skin-wmau-image-logo-horizontal">
+				<span>{{sitename}}</span>
+			</a>
+		</h1>
+		<nav>
+			<ul class="skin-wmau-list-horizontal">
+				{{#array-header-menu}}
+					{{{li}}}
+				{{/array-header-menu}}
+			</ul>
+			{{#data-search-box}}
+				<form action="{{form-action}}" id="searchform">
+					<input type="hidden" name="title" value="{{page-title}}" />
+					{{{html-input}}}
+					{{{html-button-search}}}
+				</form>
+			{{/data-search-box}}
+		</nav>
+	</div>
+</header>
+
+{{#is-user-registered}}
+	<aside class="skin-wmau-action-drawer">
+		<ul>
+			<li class="skin-wmau-feathericons-tool"><span>Tools</span></li>
+			{{# array-tools}}
+				{{{li}}}
+			{{/array-tools}}
+		</ul>
+	</aside>
+{{/is-user-registered}}
+
+<article class="mw-body skin-wmau-container">
+
+	{{#data-subject-page}}{{>icon-link}}{{/data-subject-page}}
+
+	{{#page-title}}
+		<h1 class="skin-wmau-title">
+			<a href="{{url}}">
+				{{#ns}}<span class="skin-wmau-title-ns">{{.}}</span>{{/ns}}
+				<span class="skin-wmau-title-text">{{text}}</span>
+			</a>
+		</h1>
+	{{/page-title}}
+
+	{{{html-body-content}}}
+
+	{{{html-after-content}}}
+
+	{{#data-talk-page}}{{>icon-link}}{{/data-talk-page}}
+
+</article>
+
+<footer>
+	<div class="skin-wmau-container">
+		<section class="skin-wmau-footer-left">
+			<p class="skin-wmau-image-logo-black-small"></p>
+			<p class="skin-wmau-contact">
+				<strong>Wikimedia Australia, Inc.</strong><br>
+				<a href="mailto:contact@wikimedia.org.au">contact@wikimedia.org.au</a>
+			</p>
+		</section>
+		<section class="skin-wmau-footer-right">
+			<ul class="skin-wmau-list-horizontal">
+				{{#array-footer-menu-1}}
+					{{{li}}}
+				{{/array-footer-menu-1}}
+			</ul>
+			<ul class="skin-wmau-list-horizontal">
+				{{#array-footer-menu-2}}
+					{{{li}}}
+				{{/array-footer-menu-2}}
+			</ul>
+		</section>
+	</div>
+</footer>

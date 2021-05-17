@@ -169,7 +169,7 @@ h3 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #000;
+	color: inherit;
 	margin: 2em auto;
 
 	abbr {
@@ -180,14 +180,19 @@ h3 {
 .skin-wmau-subject-link a {
 	display: flex;
 	align-items: center;
+	color: inherit;
 
 	abbr {
 		margin-right: 0.3em;
 	}
 }
 
-.skin-wmau-ns {
-	opacity: 0.7;
+.skin-wmau-title a {
+	color: inherit;
+
+	.skin-wmau-title-ns {
+		opacity: 0.7;
+	}
 }
 
 .center {
@@ -232,4 +237,8 @@ h3 {
 .thumbinner .thumbimage,
 .thumbborder {
 	border: solid 1px @skin-wmau-lightgreen;
+}
+
+.printfooter {
+	display: none;
 }

@@ -11,7 +11,18 @@
 	"license-name": "GPL-3.0+",
 	"type": "skin",
 	"ValidSkinNames": {
-		"wmau": "WMAU"
+		"wmau": {
+			"class": "SkinWMAU",
+			"args": [ {
+				"name": "WMAU",
+				"responsive": true,
+				"templateDirectory": "skins/WMAU/templates",
+				"messages": [
+					"wmau-talk-link",
+					"wmau-subject-link"
+				]
+			} ]
+		}
 	},
 	"MessagesDirs": {
 		"WMAU": [
@@ -54,8 +65,7 @@
 		"remoteSkinPath": "WMAU/resources/"
 	},
 	"AutoloadClasses": {
-		"SkinWMAU": "includes/SkinWMAU.php",
-		"WMAUTemplate": "includes/WMAUTemplate.php"
+		"SkinWMAU": "includes/SkinWMAU.php"
 	},
 	"manifest_version": 2
 }
