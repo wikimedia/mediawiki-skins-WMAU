@@ -31,6 +31,7 @@
 	},
 	"ResourceModules": {
 		"skins.wmau": {
+			"class": "ResourceLoaderSkinModule",
 			"styles": {
 				"less/style.less": {
 					"media": "screen"
@@ -57,7 +58,8 @@
 	},
 	"ResourceModuleSkinStyles": {
 		"wmau": {
-			"+ext.echo.styles.badge": "resources/extensions/Echo.less"
+			"+ext.echo.styles.badge": "less/ext-echo.less",
+			"+ext.WikidataPageBanner": "less/ext-wikidata-page-banner.less"
 		}
 	},
 	"ResourceFileModulePaths": {

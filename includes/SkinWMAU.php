@@ -38,6 +38,7 @@ class SkinWMAU extends SkinMustache {
 		$subjectPage = Title::castFromLinkTarget( $services
 			->getNamespaceInfo()
 			->getSubjectPage( $this->getTitle() ) );
+
 		$out[ 'page-title' ] = [
 			[
 				'url' => $this->getTitle()->getLocalURL(),
