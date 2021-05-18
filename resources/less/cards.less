@@ -1,0 +1,42 @@
+@skin-wmau-card-space: 12px;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #c0c0c0;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	position: relative;
+
+	& > * {
+		margin: 0;
+		line-height: 1;
+	}
+
+	.card-body {
+		margin: @skin-wmau-card-space;
+
+		& > * {
+			margin: 0;
+		}
+	}
+
+	.card-title {
+		display: block;
+		font-size: larger;
+		font-weight: bolder;
+		margin-bottom: @skin-wmau-card-space;
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	a {
+		color: inherit;
+	}
+}
