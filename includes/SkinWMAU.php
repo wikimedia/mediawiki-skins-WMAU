@@ -12,9 +12,11 @@ class SkinWMAU extends SkinMustache {
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
-		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
-		$out->addModuleStyles( [ 'skins.wmau', 'skins.wmau.images' ] );
-		$out->addModules( [ 'skins.wmau.js' ] );
+		$version = $out->getConfig()->get( 'Version' );
+		if ( version_compare( $version, '1.36', '<' ) ) {
+			// @TODO Remove after support for 1.35 is dropped. This is replaced by the `responsive` option in skin.json.
+			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
+		}
 	}
 
 	/**

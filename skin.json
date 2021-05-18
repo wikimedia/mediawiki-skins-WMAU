@@ -10,6 +10,9 @@
 	"namemsg": "skinname-wmau",
 	"license-name": "GPL-3.0+",
 	"type": "skin",
+	"requires": {
+		"MediaWiki": ">= 1.35.0"
+	},
 	"ValidSkinNames": {
 		"wmau": {
 			"class": "SkinWMAU",
@@ -17,6 +20,13 @@
 				"name": "WMAU",
 				"responsive": true,
 				"templateDirectory": "skins/WMAU/templates",
+				"styles": [
+					"skins.wmau",
+					"skins.wmau.images"
+				],
+				"scripts": [
+					"skins.wmau.js"
+				],
 				"messages": [
 					"wmau-talk-link",
 					"wmau-subject-link"
