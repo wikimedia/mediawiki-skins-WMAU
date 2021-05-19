@@ -1,0 +1,38 @@
+@skin-wmau-toc-color: #999999;
+
+.toc {
+	font-size: smaller;
+	border-color: @skin-wmau-toc-color;
+	border-style: double;
+	border-width: 3px 0;
+	width: 50%;
+
+	.toctitle {
+		border-bottom: 1px solid @skin-wmau-toc-color;
+
+		#mw-toc-heading {
+			margin: 0;
+			color: @skin-wmau-toc-color;
+		}
+	}
+
+	.toctogglespan {
+		display: none;
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+
+		ul {
+			padding-left: 1em;
+			margin: 0 !important; /* stylelint-disable-line declaration-no-important */
+			border-left: 3px solid #e3ebf1;
+		}
+	}
+
+	.tocnumber {
+		display: none;
+	}
+}
