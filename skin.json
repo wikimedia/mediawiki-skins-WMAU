@@ -28,6 +28,11 @@
 					"skins.wmau.js"
 				],
 				"messages": [
+					"sitetitle",
+					"wmau-site-full-title",
+					"wmau-site-email",
+					"wmau-logo-wordmark-alt",
+					"wmau-logo-icon-alt"
 				]
 			} ]
 		}

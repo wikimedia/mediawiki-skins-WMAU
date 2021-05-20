@@ -6,6 +6,10 @@
 	},
 	"skinname-wmau": "{{optional}}",
 	"wmau-desc": "{{desc|what=skin|name=WMAU|url=https://www.mediawiki.org/wiki/Skin:WMAU}}",
+	"wmau-site-full-title": "{{SITENAME}}",
+	"wmau-site-email": "",
+	"wmau-logo-wordmark-alt": "Image alt text for the logo's wordmark.",
+	"wmau-logo-icon-alt": "Image alt text for the logo's icon.",
 	"wmau-talk-link": "Link text for subject-page footer link to the talk page.",
 	"wmau-subject-link": "Link text for talk-page header link back to the subject page."
 }

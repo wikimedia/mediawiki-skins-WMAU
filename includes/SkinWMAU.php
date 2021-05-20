@@ -103,7 +103,32 @@ class SkinWMAU extends SkinMustache {
 		];
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
+		$out[ 'data-logos' ] = $this->getLogosData();
+		foreach ( $this->options['messages'] ?? [] as $message ) {
+			$out[ 'msg-' . $message ] = $this->msg( $message )->text();
+		}
 		return $out;
+	}
+
+	/**
+	 * @return array of logo data localised to the current language variant
+	 */
+	private function getLogosData(): array {
+		$logoData = ResourceLoaderSkinModule::getAvailableLogos( $this->getConfig() );
+		// check if the logo supports variants
+		$variantsLogos = $logoData['variants'] ?? null;
+		if ( $variantsLogos ) {
+			$preferred = $this->getOutput()->getTitle()
+				->getPageViewLanguage()->getCode();
+			$variantOverrides = $variantsLogos[$preferred] ?? null;
+			// Overrides the logo
+			if ( $variantOverrides ) {
+				foreach ( $variantOverrides as $key => $val ) {
+					$logoData[$key] = $val;
+				}
+			}
+		}
+		return $logoData;
 	}
 
 	/**

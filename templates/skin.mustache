@@ -1,8 +1,15 @@
 <header>
 	<div class="skin-wmau-container">
 		<h1 id="sitename">
-			<a href="{{url-mainpage}}" class="skin-wmau-image-logo-horizontal">
-				<span>{{sitename}}</span>
+			<a href="{{url-mainpage}}" title="{{msg-sitetitle}}">
+				{{#data-logos}}
+					{{#wordmark}}
+						<img src="{{src}}" width="{{width}}" height="{{height}}" alt="{{msg-logo-wordmark-alt}}" />
+					{{/wordmark}}
+					{{^wordmark}}
+						{{msg-sitetitle}}
+					{{/wordmark}}
+				{{/data-logos}}
 			</a>
 		</h1>
 		<nav>
@@ -63,10 +70,17 @@
 <footer>
 	<div class="skin-wmau-container">
 		<section class="skin-wmau-footer-left">
-			<p class="skin-wmau-image-logo-black-small"></p>
+			{{#data-logos}}
+				{{#icon}}
+					<img src="{{.}}" width="50" height="50" alt="{{msg-wmau-logo-icon-alt}}" />
+				{{/icon}}
+			{{/data-logos}}
 			<p class="skin-wmau-contact">
-				<strong>Wikimedia Australia, Inc.</strong><br>
-				<a href="mailto:contact@wikimedia.org.au">contact@wikimedia.org.au</a>
+				<strong>{{msg-wmau-site-full-title}}</strong>
+				{{#msg-wmau-site-email}}
+					<br>
+					<a href="mailto:{{.}}">{{.}}</a>
+				{{/msg-wmau-site-email}}
 			</p>
 		</section>
 		<section class="skin-wmau-footer-right">
