@@ -61,7 +61,7 @@ class SkinWMAU extends SkinMustache {
 		$talkPage = $this->getTitle()->getTalkPageIfDefined();
 		if ( !$this->getTitle()->isTalkPage() && $talkPage ) {
 			$out[ 'data-talk-page' ] = [
-				'text' => $this->msg( 'wmau-talk-link' ),
+				'text' => $this->msg( 'wmau-talk-link' )->text(),
 				'icon' => 'message-square',
 				'url' => $talkPage->getLocalURL(),
 				'class' => 'skin-wmau-talk-link',

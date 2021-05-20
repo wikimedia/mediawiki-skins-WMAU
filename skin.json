@@ -28,8 +28,6 @@
 					"skins.wmau.js"
 				],
 				"messages": [
-					"wmau-talk-link",
-					"wmau-subject-link"
 				]
 			} ]
 		}

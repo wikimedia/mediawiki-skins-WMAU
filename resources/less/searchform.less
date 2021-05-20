@@ -17,14 +17,59 @@ body.client-nojs .skin-wmau-search {
 
 #searchform {
 	position: absolute;
-	padding: 3px;
 	display: none;
 	overflow: hidden;
 	z-index: 2;
 	max-width: 90%;
+	width: 300px;
 
 	&.skin-wmau-search-active {
 		width: auto;
 		height: auto;
+	}
+
+	.skin-wmau-searchform-inner {
+		display: flex;
+	}
+
+	input {
+		border: 1px solid #ccc;
+		border-radius: 0;
+		padding: 0.5em;
+	}
+
+	input[ type='search' ] {
+		flex: 5;
+		border-width: 0 1px 0 0;
+	}
+
+	input[ type='submit' ] {
+		flex: 1;
+		border-width: 0;
+	}
+}
+
+@media screen and ( max-width: @skin-wmau-smallscreen-width ) {
+
+	// Hide the normal search icon and instead always show the form.
+	.skin-wmau-search {
+		display: none;
+	}
+
+	#searchform {
+		display: block;
+		position: relative;
+		width: 100%;
+		padding: 0;
+		max-width: 100%;
+
+		input[ type='search' ] {
+			padding: 5px;
+			border-width: 1px 1px 1px 0;
+		}
+
+		input[ type='submit' ] {
+			border-width: 1px 0;
+		}
 	}
 }

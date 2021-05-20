@@ -13,9 +13,11 @@
 			</ul>
 			{{#data-search-box}}
 				<form action="{{form-action}}" id="searchform">
-					<input type="hidden" name="title" value="{{page-title}}" />
-					{{{html-input}}}
-					{{{html-button-search}}}
+					<div class="skin-wmau-searchform-inner">
+						<input type="hidden" name="title" value="{{page-title}}" />
+						{{{html-input}}}
+						{{{html-button-search}}}
+					</div>
 				</form>
 			{{/data-search-box}}
 		</nav>

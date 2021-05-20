@@ -8,6 +8,11 @@ $( function () {
 		$searchInput = $( 'header nav #searchInput' ),
 		searchActive = true;
 
+	// Don't enable toggle behaviour on mobile (where the icon is hidden).
+	if ( !$searchLi.is( ':visible' ) ) { // eslint-disable-line no-jquery/no-sizzle
+		return;
+	}
+
 	/**
 	 * Show or hide the search form.
 	 */

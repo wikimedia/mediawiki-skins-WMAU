@@ -12,11 +12,17 @@ aside.skin-wmau-action-drawer {
 	background-color: @skin-wmau-lightgreen;
 	border-radius: 4px 0 0 4px;
 	box-shadow: 0 0 15px 4px #ccc;
-	padding: 5px;
 
 	a {
+		display: block;
 		opacity: 0.3;
 		color: @skin-wmau-green;
+		padding: 2px 5px;
+
+		&:hover {
+			background-color: #cde5dd;
+			text-decoration: none;
+		}
 	}
 
 	&:hover {
@@ -31,5 +37,11 @@ aside.skin-wmau-action-drawer {
 		list-style-type: none;
 		margin: 0;
 		padding: 0;
+	}
+}
+
+@media screen and ( max-width: @skin-wmau-smallscreen-width ) {
+	aside.skin-wmau-action-drawer {
+		display: none;
 	}
 }
