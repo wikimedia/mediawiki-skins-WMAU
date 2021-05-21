@@ -182,9 +182,11 @@ class SkinWMAU extends SkinMustache {
 		}
 		if ( isset( $menuItem[ 'page' ] ) ) {
 			$title = Title::newFromText( $menuItem[ 'page' ] );
-			$aParams[ 'href' ] = $title->getLinkURL();
-			if ( !isset( $menuItem[ 'title' ] ) ) {
-				$aParams[ 'title' ] = $title->getFullText();
+			if ( $title ) {
+				$aParams[ 'href' ] = $title->getLinkURL();
+				if ( !isset( $menuItem[ 'title' ] ) ) {
+					$aParams[ 'title' ] = $title->getFullText();
+				}
 			}
 		}
 		// contents
