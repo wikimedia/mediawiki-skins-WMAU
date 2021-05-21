@@ -7,6 +7,9 @@ use MediaWiki\MediaWikiServices;
  */
 class SkinWMAU extends SkinMustache {
 
+	/** @var mixed[] Skin config read from the wmau-config.json message. */
+	private $skinConfig;
+
 	/**
 	 * Initialise the page.
 	 * @param OutputPage $out
@@ -69,43 +72,42 @@ class SkinWMAU extends SkinMustache {
 		}
 		$out[ 'is-talk-page' ] = $this->getTitle()->isTalkPage();
 		$out[ 'url-mainpage' ] = Title::newMainPage()->getLocalUrl();
-		$out[ 'array-header-menu' ] = [
-			[ 'li' => $this->getMenuItem( [ 'page' => 'About us' ] ) ],
-			[ 'li' => $this->getMenuItem( [ 'page' => "What's on", 'text' => 'What&rsquo;s on' ] ) ],
-			[ 'li' => $this->getMenuItem( [ 'page' => 'Projects & news' ] ) ],
-			[ 'li' => $this->getMenuItem( [ 'page' => 'Governance' ] ) ],
-			[ 'li' => $this->getMenuItem( [ 'page' => 'Contact' ] ) ],
-			[ 'li' => $this->getMenuItem( [
-				'page' => 'Special:Search',
-				'icon' => 'search',
-				'class' => 'skin-wmau-search',
-				] ) ],
-		];
-		$out['array-footer-menu-1'] = [
-			[ 'li' => $this->getMenuItem( [
-				'icon' => 'facebook',
-				'title' => 'Facebook',
-				'url' => 'https://www.facebook.com/wikimedia.au',
-				] ) ],
-			[ 'li' => $this->getMenuItem( [
-				'icon' => 'twitter',
-				'title' => 'Twitter',
-				'url' => 'https://twitter.com/wma_au',
-				] ) ],
-		];
+		$skinConfig = json_decode( $this->msg( 'wmau-config.json' )->text(), true );
+		$out[ 'array-header-menu' ] = [];
+		foreach ( $skinConfig['header_menu'] ?? [] as $menuConfig ) {
+			$out['array-header-menu'][] = $this->getMenuItem( $menuConfig );
+		}
+		$out['array-header-menu'][] = $this->getMenuItem( [
+			'page' => 'Special:Search',
+			'icon' => 'search',
+			'class' => 'skin-wmau-search',
+		] );
+		$out['array-footer-menu-1'] = $this->getMenu( 'footer_menu_1' );
 		$logInOut = $this->getUser()->isRegistered()
 			? $this->getMenuItem( [ 'page' => 'Special:UserLogout', 'text' => 'Log out' ] )
 			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
-		$out['array-footer-menu-2'] = [
-			[ 'li' => $this->getMenuItem( [ 'page' => 'Donate' ] ) ],
-			[ 'li' => $this->getMenuItem( [ 'page' => 'Newsletter' ] ) ],
-			[ 'li' => $logInOut ],
-		];
+		$out['array-footer-menu-2'] = $this->getMenu( 'footer_menu_2' );
+		$out['array-footer-menu-2'][] = $logInOut;
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
 		$out[ 'data-logos' ] = $this->getLogosData();
 		foreach ( $this->options['messages'] ?? [] as $message ) {
 			$out[ 'msg-' . $message ] = $this->msg( $message )->text();
+		}
+		return $out;
+	}
+
+	/**
+	 * @param string $name
+	 * @return string[] HTML of the menu list items.
+	 */
+	private function getMenu( $name ): array {
+		if ( !$this->skinConfig ) {
+			$this->skinConfig = json_decode( $this->msg( 'wmau-config.json' )->text(), true );
+		}
+		$out = [];
+		foreach ( $this->skinConfig[ $name ] ?? [] as $menuConfig ) {
+			$out[] = $this->getMenuItem( $menuConfig );
 		}
 		return $out;
 	}
@@ -168,6 +170,7 @@ class SkinWMAU extends SkinMustache {
 	 * @return string
 	 */
 	public function getMenuItem( array $menuItem ): string {
+		$menuItem = array_filter( $menuItem );
 		$aParams = [];
 		// title
 		if ( isset( $menuItem[ 'title' ] ) ) {
