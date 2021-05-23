@@ -4,4 +4,3 @@ port=29418
 project=mediawiki/skins/WMAU.git
 track=1
 defaultrebase=0
-defaultbranch=main
