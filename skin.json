@@ -47,20 +47,10 @@
 			"class": "ResourceLoaderSkinModule",
 			"styles": {
 				"less/style.less": {
-					"media": "screen"
 				},
 				"less/mobile.less": {
 					"media": "screen and (max-width: 750px)"
 				}
-			}
-		},
-		"skins.wmau.images": {
-			"class": "ResourceLoaderImageModule",
-			"selector": ".skin-wmau-image-{name}",
-			"images": {
-				"logo": "images/logo.svg",
-				"logo-black-small": "images/logo-black-small.svg",
-				"logo-horizontal": "images/logo-horizontal.svg"
 			}
 		},
 		"skins.wmau.js": {
