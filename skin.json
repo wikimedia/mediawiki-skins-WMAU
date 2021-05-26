@@ -48,6 +48,9 @@
 			"styles": {
 				"less/style.less": {
 				},
+				"less/print.less": {
+					"media": "print"
+				},
 				"less/mobile.less": {
 					"media": "screen and (max-width: 750px)"
 				}

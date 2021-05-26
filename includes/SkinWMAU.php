@@ -91,6 +91,7 @@ class SkinWMAU extends SkinMustache {
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
 		$out[ 'data-logos' ] = $this->getLogosData();
+		$out[ 'html-retrievedfrom' ] = $this->printSource();
 		foreach ( $this->options['messages'] ?? [] as $message ) {
 			$out[ 'msg-' . $message ] = $this->msg( $message )->text();
 		}
