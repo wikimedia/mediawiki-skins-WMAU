@@ -49,11 +49,11 @@
 	{{#data-subject-page}}{{>icon-link}}{{/data-subject-page}}
 
 	{{#page-title}}
-		<h1 class="skin-wmau-title">
-			<a href="{{url}}">
+		<h1 class="skin-wmau-title firstHeading">
+			{{#url}}<a href="{{.}}">{{/url}}
 				{{#ns}}<span class="skin-wmau-title-ns">{{.}}</span>{{/ns}}
 				<span class="skin-wmau-title-text">{{text}}</span>
-			</a>
+			{{#url}}</a>{{/url}}
 		</h1>
 	{{/page-title}}
 

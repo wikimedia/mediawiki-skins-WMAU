@@ -1,5 +1,6 @@
 @skin-wmau-green: #3F5A54;
 @skin-wmau-red: #d04545;
+@skin-wmau-blue: #0066bf;
 @skin-wmau-lightgreen: #f7fdfb;
 @skin-wmau-smallscreen-width: 750px;
 @import 'action-drawer';
@@ -108,14 +109,10 @@ ul.skin-wmau-list-horizontal {
 
 a {
 	text-decoration: none;
-	color: #0066bf;
+	color: @skin-wmau-blue;
 
 	&.new {
 		color: @skin-wmau-red;
-	}
-
-	&.external.text {
-		color: #0b9b53;
 	}
 }
 
@@ -226,10 +223,10 @@ textarea {
 
 .skin-wmau-title a {
 	color: inherit;
+}
 
-	.skin-wmau-title-ns {
-		opacity: 0.7;
-	}
+.skin-wmau-title-ns {
+	opacity: 0.7;
 }
 
 .center {

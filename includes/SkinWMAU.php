@@ -46,7 +46,10 @@ class SkinWMAU extends SkinMustache {
 
 		$out[ 'page-title' ] = [
 			[
-				'url' => $this->getTitle()->getLocalURL(),
+				// Only link if we're not currently viewing the page.
+				'url' => Action::getActionName( $this->getContext() ) === 'view'
+					? false
+					: $this->getTitle()->getLocalURL(),
 				'text' => $this->getTitle()->getText(),
 				'ns' => $this->getTitle()->getNamespace() !== NS_MAIN
 					? $this->getTitle()->getNsText() . $this->msg( 'colon-separator' )->text()
@@ -62,7 +65,7 @@ class SkinWMAU extends SkinMustache {
 			]
 			: false;
 		$talkPage = $this->getTitle()->getTalkPageIfDefined();
-		if ( !$this->getTitle()->isTalkPage() && $talkPage ) {
+		if ( !$this->getTitle()->isTalkPage() && $talkPage && !$this->getTitle()->isMainPage() ) {
 			$out[ 'data-talk-page' ] = [
 				'text' => $this->msg( 'wmau-talk-link' )->text(),
 				'icon' => 'message-square',
