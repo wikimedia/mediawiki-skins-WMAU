@@ -141,24 +141,35 @@ class SkinWMAU extends SkinMustache {
 	 * @return array
 	 */
 	private function getToolDrawerLinks() {
-		$links = [];
-		foreach ( $this->buildContentNavigationUrls() as $x => $contentNavigationUrls ) {
-			if ( $x === 'namespaces' ) {
-				// Talk and article links are handled separately.
+		// Get all links.
+		$contentNavigationUrls = $this->buildContentNavigationUrls();
+		$toolbox = $this->buildSidebar()['TOOLBOX'];
+		// Start with the items we want first.
+		$links = array_merge( $contentNavigationUrls['views'], $contentNavigationUrls['actions'], $toolbox );
+		// Then make sure all others are included.
+		foreach ( $contentNavigationUrls as $groupName => $urls ) {
+			if ( in_array( $groupName, [ 'namespaces', 'user-menu' ] ) ) {
+				// Talk and article links are handled separately,
+				// and the user menu is put at the end.
 				continue;
 			}
-			$links = array_merge( $links, $contentNavigationUrls );
+			foreach ( $urls as $urlName => $url ) {
+				if ( !isset( $links[ $urlName ] ) ) {
+					$links[ $urlName ] = $url;
+				}
+			}
 		}
 		$links = array_merge(
 			$links,
 			$this->buildNavUrls(),
-			$this->getPersonalToolsForMakeListItem( $this->buildPersonalUrls() )
+			$this->getPersonalToolsForMakeListItem( $this->buildPersonalUrls() ),
+			// MW 1.36 introduced 'user-menu'; before that it was included above.
+			$contentNavigationUrls['user-menu'] ?? []
 		);
 		unset(
 			$links['logout'],
 			$links['mainpage'],
-			$links['specialpages'],
-			$links['upload']
+			$links['specialpages']
 		);
 		$out = [];
 		foreach ( $links as $url => $urlDetails ) {
