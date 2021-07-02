@@ -67,16 +67,16 @@ footer .skin-wmau-container {
 		color: inherit;
 	}
 
-	section {
+	.skin-wmau-footer-left,
+	.skin-wmau-footer-right {
 		flex: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		line-height: 1em;
 	}
 
 	.skin-wmau-footer-left {
-		display: flex;
-		line-height: 1em;
-		flex-direction: column;
-		justify-content: space-between;
-
 		.skin-wmau-icon-title {
 			display: flex;
 			align-items: center;
@@ -94,6 +94,7 @@ footer .skin-wmau-container {
 
 		.skin-wmau-footer-blurb {
 			font-size: smaller;
+			margin-top: 10px;
 
 			p {
 				margin: 0;
