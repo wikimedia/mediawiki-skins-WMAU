@@ -70,25 +70,27 @@
 <footer>
 	<div class="skin-wmau-container">
 		<section class="skin-wmau-footer-left">
-			{{#data-logos}}
-				{{#icon}}
-					<img src="{{.}}" width="50" height="50" alt="{{msg-wmau-logo-icon-alt}}" />
-				{{/icon}}
-			{{/data-logos}}
-			<p class="skin-wmau-contact">
+			<div class="skin-wmau-icon-title">
+				{{#data-logos}}
+					{{#icon}}
+						<img src="{{.}}" width="50" height="50" alt="{{msg-wmau-logo-icon-alt}}" class="skin-wmau-icon" />
+					{{/icon}}
+				{{/data-logos}}
 				<strong>{{msg-wmau-site-full-title}}</strong>
-				{{#msg-wmau-site-email}}
-					<br>
-					<a href="mailto:{{.}}">{{.}}</a>
-				{{/msg-wmau-site-email}}
-			</p>
+			</div>
+			<div class="skin-wmau-footer-blurb">{{{html-footer-blurb}}}</div>
 		</section>
 		<section class="skin-wmau-footer-right">
-			<ul class="skin-wmau-list-horizontal">
+			<ul class="skin-wmau-list-horizontal skin-wmau-footer-menu-1">
 				{{#array-footer-menu-1}}
 					{{{.}}}
 				{{/array-footer-menu-1}}
 			</ul>
+			<div class="skin-wmau-contact">
+				{{#msg-wmau-site-email}}
+					<a href="mailto:{{.}}">{{.}}</a>
+				{{/msg-wmau-site-email}}
+			</div>
 			<ul class="skin-wmau-list-horizontal">
 				{{#array-footer-menu-2}}
 					{{{.}}}

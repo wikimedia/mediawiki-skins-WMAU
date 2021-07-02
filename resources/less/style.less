@@ -57,9 +57,9 @@ header .skin-wmau-container {
 
 footer .skin-wmau-container {
 	display: flex;
-	align-items: center;
+	align-items: normal;
 	margin-top: 20px;
-	padding: 0;
+	padding: 30px 0;
 	font-size: 92%;
 	min-height: 60px;
 
@@ -74,20 +74,53 @@ footer .skin-wmau-container {
 	.skin-wmau-footer-left {
 		display: flex;
 		line-height: 1em;
-		align-items: center;
+		flex-direction: column;
+		justify-content: space-between;
 
-		.skin-wmau-image-logo-black-small {
+		.skin-wmau-icon-title {
+			display: flex;
+			align-items: center;
+		}
+
+		.skin-wmau-icon-title > * {
+			display: block;
+		}
+
+		.skin-wmau-icon {
 			width: 50px;
 			height: 50px;
+			margin-right: 20px;
 		}
 
-		.skin-wmau-contact {
-			margin-left: 1em;
+		.skin-wmau-footer-blurb {
+			font-size: smaller;
+
+			p {
+				margin: 0;
+			}
+
+			a {
+				text-decoration: underline;
+			}
 		}
+	}
+
+	.skin-wmau-icon-title,
+	.skin-wmau-footer-menu-1 {
+		height: 55px;
 	}
 
 	.skin-wmau-footer-right {
 		text-align: right;
+	}
+
+	.skin-wmau-contact {
+		margin-bottom: 10px;
+		font-size: smaller;
+	}
+
+	.skin-wmau-list-horizontal a {
+		color: #000;
 	}
 }
 

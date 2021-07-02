@@ -75,9 +75,8 @@ class SkinWMAU extends SkinMustache {
 		}
 		$out[ 'is-talk-page' ] = $this->getTitle()->isTalkPage();
 		$out[ 'url-mainpage' ] = Title::newMainPage()->getLocalUrl();
-		$skinConfig = json_decode( $this->msg( 'wmau-config.json' )->text(), true );
 		$out[ 'array-header-menu' ] = [];
-		foreach ( $skinConfig['header_menu'] ?? [] as $menuConfig ) {
+		foreach ( $this->getWmauConfig()['header_menu'] ?? [] as $menuConfig ) {
 			$out['array-header-menu'][] = $this->getMenuItem( $menuConfig );
 		}
 		$out['array-header-menu'][] = $this->getMenuItem( [
@@ -91,6 +90,9 @@ class SkinWMAU extends SkinMustache {
 			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
 		$out['array-footer-menu-2'] = $this->getMenu( 'footer_menu_2' );
 		$out['array-footer-menu-2'][] = $logInOut;
+		$out['html-footer-blurb'] = isset( $this->getWmauConfig()['footer_blurb'] )
+			? $this->getOutput()->parseAsContent( $this->getWmauConfig()['footer_blurb'] )
+			: '';
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
 		$out[ 'data-logos' ] = $this->getLogosData();
@@ -106,14 +108,24 @@ class SkinWMAU extends SkinMustache {
 	 * @return string[] HTML of the menu list items.
 	 */
 	private function getMenu( $name ): array {
-		if ( !$this->skinConfig ) {
-			$this->skinConfig = json_decode( $this->msg( 'wmau-config.json' )->text(), true );
-		}
 		$out = [];
-		foreach ( $this->skinConfig[ $name ] ?? [] as $menuConfig ) {
+		foreach ( $this->getWmauConfig()[ $name ] ?? [] as $menuConfig ) {
 			$out[] = $this->getMenuItem( $menuConfig );
 		}
 		return $out;
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	private function getWmauConfig(): array {
+		if ( !$this->skinConfig ) {
+			$this->skinConfig = json_decode( $this->msg( 'wmau-config.json' )->text(), true );
+			if ( !is_array( $this->skinConfig ) ) {
+				$this->skinConfig = [];
+			}
+		}
+		return $this->skinConfig;
 	}
 
 	/**
