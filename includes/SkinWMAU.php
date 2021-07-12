@@ -90,9 +90,7 @@ class SkinWMAU extends SkinMustache {
 			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
 		$out['array-footer-menu-2'] = $this->getMenu( 'footer_menu_2' );
 		$out['array-footer-menu-2'][] = $logInOut;
-		$out['html-footer-blurb'] = isset( $this->getWmauConfig()['footer_blurb'] )
-			? $this->getOutput()->parseAsContent( $this->getWmauConfig()['footer_blurb'] )
-			: '';
+		$out['html-footer-blurb'] = $this->msg( 'wmau-footer-blurb' )->parse();
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
 		$out[ 'data-logos' ] = $this->getLogosData();

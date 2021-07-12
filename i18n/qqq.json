@@ -9,6 +9,7 @@
 	"wmau-site-full-title": "Full title of the site (sometimes different from sitetitle). {{notranslate}}",
 	"wmau-site-email": "Email address to be displayed in the site footer. {{notranslate}}",
 	"wmau-config.json": "JSON config message. {{notranslate}}",
+	"wmau-footer-blurb": "Wikitext for the site footer. Empty by default.",
 	"wmau-logo-wordmark-alt": "Image alt text for the logo's wordmark.",
 	"wmau-logo-icon-alt": "Image alt text for the logo's icon.",
 	"wmau-talk-link": "Link text for subject-page footer link to the talk page.",
