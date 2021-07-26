@@ -186,6 +186,13 @@ class SkinWMAU extends SkinMustache {
 			if ( is_array( $urlDetails ) ) {
 				$out[] = [ 'li' => $this->makeListItem( $url, $urlDetails ) ];
 			}
+			if ( $url === 'recentchangeslinked' ) {
+				$out[] = [ 'li' => $this->makeListItem( 'recentchanges', [
+					'text' => $this->msg( 'recentchanges' )->text(),
+					'href' => self::makeSpecialUrl( 'Recentchanges' ),
+					'id' => 'n-recentchanges',
+				] ) ];
+			}
 		}
 		return $out;
 	}
