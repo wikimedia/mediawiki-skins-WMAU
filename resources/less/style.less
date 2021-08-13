@@ -56,8 +56,6 @@ header .skin-wmau-container {
 }
 
 footer .skin-wmau-container {
-	display: flex;
-	align-items: normal;
 	margin-top: 20px;
 	padding: 30px 0;
 	font-size: 92%;
@@ -67,34 +65,19 @@ footer .skin-wmau-container {
 		color: inherit;
 	}
 
-	.skin-wmau-footer-left,
-	.skin-wmau-footer-right {
-		flex: 1;
+	.skin-wmau-footer-top {
 		display: flex;
-		flex-direction: column;
 		justify-content: space-between;
 		line-height: 1em;
-	}
+		margin-bottom: 30px;
 
-	.skin-wmau-footer-left {
-		.skin-wmau-icon-title {
-			display: flex;
-			align-items: center;
-		}
-
-		.skin-wmau-icon-title > * {
-			display: block;
-		}
-
-		.skin-wmau-icon {
-			width: 50px;
-			height: 50px;
-			margin-right: 20px;
+		.skin-wmau-wordmark {
+			filter: grayscale( 1 );
+			margin-right: 100px;
 		}
 
 		.skin-wmau-footer-blurb {
 			font-size: smaller;
-			margin-top: 10px;
 
 			p {
 				margin: 0;
@@ -106,22 +89,12 @@ footer .skin-wmau-container {
 		}
 	}
 
-	.skin-wmau-icon-title,
-	.skin-wmau-footer-menu-1 {
-		height: 55px;
-	}
+	.skin-wmau-footer-menu {
+		justify-content: space-between;
 
-	.skin-wmau-footer-right {
-		text-align: right;
-	}
-
-	.skin-wmau-contact {
-		margin-bottom: 10px;
-		font-size: smaller;
-	}
-
-	.skin-wmau-list-horizontal a {
-		color: #000;
+		a {
+			color: #000;
+		}
 	}
 }
 
@@ -137,7 +110,15 @@ ul.skin-wmau-list-horizontal {
 	text-align: right;
 
 	li {
-		margin-left: 1em;
+		margin: 0 0.5em;
+	}
+
+	li:first-child {
+		margin-left: 0;
+	}
+
+	li:last-child {
+		margin-right: 0;
 	}
 }
 

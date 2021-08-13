@@ -84,12 +84,11 @@ class SkinWMAU extends SkinMustache {
 			'icon' => 'search',
 			'class' => 'skin-wmau-search',
 		] );
-		$out['array-footer-menu-1'] = $this->getMenu( 'footer_menu_1' );
+		$out['array-footer-menu'] = $this->getMenu( 'footer_menu' );
 		$logInOut = $this->getUser()->isRegistered()
 			? $this->getMenuItem( [ 'page' => 'Special:UserLogout', 'text' => 'Log out' ] )
 			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
-		$out['array-footer-menu-2'] = $this->getMenu( 'footer_menu_2' );
-		$out['array-footer-menu-2'][] = $logInOut;
+		$out['array-footer-menu'][] = $logInOut;
 		$out['html-footer-blurb'] = $this->msg( 'wmau-footer-blurb' )->parse();
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
 		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
