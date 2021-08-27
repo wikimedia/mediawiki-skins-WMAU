@@ -11,7 +11,7 @@
 	"license-name": "GPL-3.0+",
 	"type": "skin",
 	"requires": {
-		"MediaWiki": ">= 1.35.0"
+		"MediaWiki": ">= 1.37.0"
 	},
 	"ValidSkinNames": {
 		"wmau": {
@@ -19,7 +19,7 @@
 			"args": [ {
 				"name": "WMAU",
 				"responsive": true,
-				"templateDirectory": "skins/WMAU/templates",
+				"templateDirectory": "templates",
 				"styles": [
 					"skins.wmau",
 					"skins.wmau.images"
