@@ -44,18 +44,20 @@ class SkinWMAU extends SkinMustache {
 			->getNamespaceInfo()
 			->getSubjectPage( $this->getTitle() ) );
 
-		$out[ 'page-title' ] = [
-			[
-				// Only link if we're not currently viewing the page.
-				'url' => Action::getActionName( $this->getContext() ) === 'view'
-					? false
-					: $this->getTitle()->getLocalURL(),
-				'text' => $this->getTitle()->getText(),
-				'ns' => $this->getTitle()->getNamespace() !== NS_MAIN
-					? $this->getTitle()->getNsText() . $this->msg( 'colon-separator' )->text()
-					: false,
-			]
-		];
+		// Only link the page title if we're not currently viewing the page.
+		$out[ 'page-title-url' ] = Action::getActionName( $this->getContext() ) === 'view'
+			? false
+			: $this->getTitle()->getLocalURL();
+		$out[ 'page-title-text' ] = $this->getTitle()->getText();
+		$out[ 'page-title-ns' ] = $this->getTitle()->getNamespace() !== NS_MAIN
+			? $this->getTitle()->getNsText() . $this->msg( 'colon-separator' )->text()
+			: false;
+		// @HACK There's no way to get the display title, so instead we check that it's different.
+		$displayTitle = $this->getOutput()->getDisplayTitle();
+		$out[ 'page-title-displaytitle' ] = $displayTitle !== $this->getTitle()->getPrefixedText()
+			? $displayTitle
+			: false;
+
 		$out[ 'data-subject-page' ] = $this->getTitle()->isTalkPage()
 			? [
 				'class' => 'skin-wmau-subject-link',

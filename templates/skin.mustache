@@ -48,14 +48,15 @@
 
 	{{#data-subject-page}}{{>icon-link}}{{/data-subject-page}}
 
-	{{#page-title}}
-		<h1 class="skin-wmau-title firstHeading">
-			{{#url}}<a href="{{.}}">{{/url}}
-				{{#ns}}<span class="skin-wmau-title-ns">{{.}}</span>{{/ns}}
-				<span class="skin-wmau-title-text">{{text}}</span>
-			{{#url}}</a>{{/url}}
-		</h1>
-	{{/page-title}}
+	<h1 class="skin-wmau-title firstHeading">
+		{{#page-title-url}}<a href="{{.}}">{{/page-title-url}}
+			{{#page-title-displaytitle}}{{.}}{{/page-title-displaytitle}}
+			{{^page-title-displaytitle}}
+				{{#page-title-ns}}<span class="skin-wmau-title-ns">{{.}}</span>{{/page-title-ns}}
+				<span class="skin-wmau-title-text">{{page-title-text}}</span>
+			{{/page-title-displaytitle}}
+		{{#url}}</a>{{/url}}
+	</h1>
 
 	{{{html-subtitle}}}
 
