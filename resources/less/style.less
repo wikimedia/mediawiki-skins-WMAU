@@ -297,3 +297,27 @@ textarea {
 .skin-wmau-retrievedfrom {
 	display: none;
 }
+
+.skin-WMAU .catlinks {
+	border-width: 0;
+	background-color: inherit;
+	font-size: smaller;
+
+	a {
+		color: inherit;
+	}
+
+	li {
+		border-left-width: 0;
+		padding: 0;
+		display: inline;
+	}
+
+	li:before {
+		content: '\00020\000B7\00020';
+	}
+
+	li:first-child:before {
+		content: '';
+	}
+}
