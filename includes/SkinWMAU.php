@@ -11,18 +11,6 @@ class SkinWMAU extends SkinMustache {
 	private $skinConfig;
 
 	/**
-	 * Initialise the page.
-	 * @param OutputPage $out
-	 */
-	public function initPage( OutputPage $out ) {
-		$version = $out->getConfig()->get( 'Version' );
-		if ( version_compare( $version, '1.36', '<' ) ) {
-			// @TODO Remove after support for 1.35 is dropped. This is replaced by the `responsive` option in skin.json.
-			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
-		}
-	}
-
-	/**
 	 * Subclasses may extend this method to add additional
 	 * template data.
 	 *
@@ -93,7 +81,6 @@ class SkinWMAU extends SkinMustache {
 		$out['array-footer-menu'][] = $logInOut;
 		$out['html-footer-blurb'] = $this->msg( 'wmau-footer-blurb' )->parse();
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
-		$out[ 'array-tools' ] = $this->getToolDrawerLinks();
 		$out[ 'data-logos' ] = $this->getLogosData();
 		$out[ 'html-retrievedfrom' ] = $this->printSource();
 		foreach ( $this->options['messages'] ?? [] as $message ) {
@@ -146,56 +133,6 @@ class SkinWMAU extends SkinMustache {
 			}
 		}
 		return $logoData;
-	}
-
-	/**
-	 * @return array
-	 */
-	private function getToolDrawerLinks() {
-		// Get all links.
-		$contentNavigationUrls = $this->buildContentNavigationUrls();
-		$toolbox = $this->buildSidebar()['TOOLBOX'];
-		// Start with the items we want first.
-		$links = array_merge( $contentNavigationUrls['views'], $contentNavigationUrls['actions'], $toolbox );
-		// Then make sure all others are included.
-		foreach ( $contentNavigationUrls as $groupName => $urls ) {
-			if ( in_array( $groupName, [ 'namespaces', 'user-menu' ] ) ) {
-				// Talk and article links are handled separately,
-				// and the user menu is put at the end.
-				continue;
-			}
-			foreach ( $urls as $urlName => $url ) {
-				if ( !isset( $links[ $urlName ] ) ) {
-					$links[ $urlName ] = $url;
-				}
-			}
-		}
-		$links = array_merge(
-			$links,
-			$this->buildNavUrls(),
-			$this->getPersonalToolsForMakeListItem( $this->buildPersonalUrls() ),
-			// MW 1.36 introduced 'user-menu'; before that it was included above.
-			$contentNavigationUrls['user-menu'] ?? []
-		);
-		unset(
-			$links['logout'],
-			$links['mainpage'],
-			$links['specialpages']
-		);
-		$out = [];
-		foreach ( $links as $url => $urlDetails ) {
-			if ( is_array( $urlDetails ) ) {
-				$out[] = [ 'li' => $this->makeListItem( $url, $urlDetails ) ];
-			}
-			if ( $url === 'recentchangeslinked' ) {
-				$out[] = [ 'li' => $this->makeListItem( 'recentchanges', [
-					'text' => $this->msg( 'recentchanges' )->text(),
-					'href' => self::makeSpecialUrl( 'Recentchanges' ),
-					'id' => 'n-recentchanges',
-				] ) ];
-			}
-		}
-		return $out;
 	}
 
 	/**

@@ -37,11 +37,29 @@
 	<aside class="skin-wmau-action-drawer">
 		<ul>
 			<li class="skin-wmau-feathericons-tool"><span>{{msg-toolbox}}</span></li>
-			{{#array-tools}}
-				{{{li}}}
-			{{/array-tools}}
+			{{#data-portlets}}
+				{{#data-views}}{{>portlet}}{{/data-views}}
+				{{#data-actions}}{{>portlet}}{{/data-actions}}
+				{{#data-variants}}{{>portlet}}{{/data-variants}}
+			{{/data-portlets}}
+			{{#data-portlets-sidebar}}
+				{{#array-portlets-rest}}
+					{{#.}}{{>portlet}}{{/.}}
+				{{/array-portlets-rest}}
+			{{/data-portlets-sidebar}}
+			{{#data-portlets}}
+				{{#data-user-interface-preferences}}{{>portlet}}{{/data-user-interface-preferences}}
+			{{/data-portlets}}
+			<div class="skin-wmau-user-menu">
+				{{#data-portlets}}
+					{{#data-user-menu}}{{>portlet}}{{/data-user-menu}}
+				{{/data-portlets}}
+			</div>
 		</ul>
 	</aside>
+	<div class="skin-wmau-notifications">
+		{{#data-portlets.data-notifications}}{{>portlet}}{{/data-portlets.data-notifications}}
+	</div>
 {{/is-user-registered}}
 
 <article class="mw-body skin-wmau-container">

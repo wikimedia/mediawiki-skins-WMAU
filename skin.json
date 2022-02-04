@@ -37,6 +37,15 @@
 			} ]
 		}
 	},
+	"Hooks": {
+		"SidebarBeforeOutput": "WMAUHooks",
+		"SkinTemplateNavigation::Universal": "WMAUHooks"
+	},
+	"HookHandlers": {
+		"WMAUHooks": {
+			"class": "WMAUHooks"
+		}
+	},
 	"MessagesDirs": {
 		"WMAU": [
 			"i18n"
@@ -73,7 +82,8 @@
 		"remoteSkinPath": "WMAU/resources/"
 	},
 	"AutoloadClasses": {
-		"SkinWMAU": "includes/SkinWMAU.php"
+		"SkinWMAU": "includes/SkinWMAU.php",
+		"WMAUHooks": "includes/WMAUHooks.php"
 	},
 	"manifest_version": 2
 }
