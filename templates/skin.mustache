@@ -50,7 +50,10 @@
 			{{#data-portlets}}
 				{{#data-user-interface-preferences}}{{>portlet}}{{/data-user-interface-preferences}}
 			{{/data-portlets}}
-			<div class="skin-wmau-user-menu">
+			<div class="skin-wmau-drawer-section">
+				{{{html-recentchanges}}}
+			</div>
+			<div class="skin-wmau-drawer-section skin-wmau-user-menu">
 				{{#data-portlets}}
 					{{#data-user-menu}}{{>portlet}}{{/data-user-menu}}
 				{{/data-portlets}}

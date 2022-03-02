@@ -86,6 +86,11 @@ class SkinWMAU extends SkinMustache {
 		foreach ( $this->options['messages'] ?? [] as $message ) {
 			$out[ 'msg-' . $message ] = $this->msg( $message )->text();
 		}
+		$out['html-recentchanges'] = $services->getLinkRenderer()->makeKnownLink(
+			SpecialPage::getTitleFor( 'Recentchanges' ),
+			$this->msg( 'recentchanges' ),
+			Linker::tooltipAndAccesskeyAttribs( 'n-recentchanges' )
+		);
 		return $out;
 	}
 
