@@ -38,7 +38,7 @@ class SkinWMAU extends SkinMustache {
 			: $this->getTitle()->getLocalURL();
 		$out[ 'page-title-text' ] = $this->getTitle()->getText();
 		$out[ 'page-title-ns' ] = $this->getTitle()->getNamespace() !== NS_MAIN
-			? $this->getTitle()->getNsText() . $this->msg( 'colon-separator' )->text()
+			? str_replace( '_', ' ', $this->getTitle()->getNsText() ) . $this->msg( 'colon-separator' )->text()
 			: false;
 		// @HACK There's no way to get the display title, so instead we check that it's different.
 		$displayTitle = $this->getOutput()->getDisplayTitle();
