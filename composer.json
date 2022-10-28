@@ -12,7 +12,8 @@
 			"minus-x check ."
 		],
 		"fix": [
-			"phpcbf"
+			"phpcbf",
+			"minus-x fix ."
 		],
 		"phpcs": "phpcs -sp --cache"
 	}
