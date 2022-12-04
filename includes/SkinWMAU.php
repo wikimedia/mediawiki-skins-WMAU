@@ -64,7 +64,7 @@ class SkinWMAU extends SkinMustache {
 			];
 		}
 		$out[ 'is-talk-page' ] = $this->getTitle()->isTalkPage();
-		$out[ 'url-mainpage' ] = Title::newMainPage()->getLocalUrl();
+		$out[ 'url-mainpage' ] = Title::newMainPage()->getLocalURL();
 		$out[ 'array-header-menu' ] = [];
 		foreach ( $this->getWmauConfig()['header_menu'] ?? [] as $menuConfig ) {
 			$out['array-header-menu'][] = $this->getMenuItem( $menuConfig );
