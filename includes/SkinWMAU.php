@@ -33,7 +33,10 @@ class SkinWMAU extends SkinMustache {
 			->getSubjectPage( $this->getTitle() ) );
 
 		// Only link the page title if we're not currently viewing the page.
-		$out[ 'page-title-url' ] = Action::getActionName( $this->getContext() ) === 'view'
+		$isView = Action::getActionName( $this->getContext() ) === 'view';
+		$diff = $this->getContext()->getRequest()->getVal( 'diff' );
+		$oldid = $this->getContext()->getRequest()->getVal( 'oldid' );
+		$out[ 'page-title-url' ] = $isView && !$diff && !$oldid
 			? false
 			: $this->getTitle()->getLocalURL();
 		$out[ 'page-title-text' ] = $this->getTitle()->getText();
