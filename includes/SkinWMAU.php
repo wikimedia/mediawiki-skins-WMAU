@@ -10,6 +10,22 @@ class SkinWMAU extends SkinMustache {
 	/** @var mixed[] Skin config read from the wmau-config.json message. */
 	private $skinConfig;
 
+	/** @var RepoGroup */
+	private $repoGroup;
+
+	/** @var WANObjectCache */
+	private $cache;
+
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( $options = null ) {
+		parent::__construct( $options );
+		$services = MediaWikiServices::getInstance();
+		$this->repoGroup = $services->getRepoGroup();
+		$this->cache = $services->getMainWANObjectCache();
+	}
+
 	/**
 	 * Subclasses may extend this method to add additional
 	 * template data.
@@ -171,12 +187,42 @@ class SkinWMAU extends SkinMustache {
 		$contents = $menuItem[ 'text' ] ?? $aParams[ 'title' ] ?? '';
 		// icon
 		if ( isset( $menuItem[ 'icon' ] ) ) {
-			$contents = $this->getFeatherIcon( $menuItem[ 'icon' ], $contents );
+			$iconUrl = $this->getWikiFileIcon( $menuItem );
+			if ( $iconUrl ) {
+				$contents = Html::element( 'img', [ 'src' => $iconUrl ] );
+			} else {
+				$contents = $this->getFeatherIcon( $menuItem[ 'icon' ], $contents );
+			}
 		}
 		$liParams = [
 			'class' => $menuItem[ 'class' ] ?? '',
 		];
 		return Html::rawElement( 'li', $liParams, Html::rawElement( 'a', $aParams, $contents ) );
+	}
+
+	/**
+	 * @param array $menuItem The menu item details array.
+	 * @return string|null The URL to the icon thumbnail, or null if the file could not be found.
+	 */
+	private function getWikiFileIcon( array $menuItem ): ?string {
+		if ( !isset( $menuItem['icon'] ) ) {
+			return null;
+		}
+		$repoGroup = $this->repoGroup;
+		$filename = $menuItem['icon'];
+		$iconWidth = $menuItem['icon_width'] ?? 24;
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeKey( 'skin-WMAU-icon', $filename, $iconWidth ),
+			WANObjectCache::TTL_MONTH,
+			static function () use ( $repoGroup, $filename, $iconWidth ) {
+				$iconTitle = Title::newFromText( $filename, NS_FILE );
+				$iconFile = $repoGroup->findFile( $iconTitle );
+				if ( !$iconFile ) {
+					return null;
+				}
+				return $iconFile->transform( [ 'width' => $iconWidth ] )->getUrl();
+			}
+		);
 	}
 
 	/**
