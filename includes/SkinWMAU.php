@@ -52,20 +52,20 @@ class SkinWMAU extends SkinMustache {
 		$isView = Action::getActionName( $this->getContext() ) === 'view';
 		$diff = $this->getContext()->getRequest()->getVal( 'diff' );
 		$oldid = $this->getContext()->getRequest()->getVal( 'oldid' );
-		$out[ 'page-title-url' ] = $isView && !$diff && !$oldid
+		$out['page-title-url'] = $isView && !$diff && !$oldid
 			? false
 			: $this->getTitle()->getLocalURL();
-		$out[ 'page-title-text' ] = $this->getTitle()->getText();
-		$out[ 'page-title-ns' ] = $this->getTitle()->getNamespace() !== NS_MAIN
+		$out['page-title-text'] = $this->getTitle()->getText();
+		$out['page-title-ns'] = $this->getTitle()->getNamespace() !== NS_MAIN
 			? str_replace( '_', ' ', $this->getTitle()->getNsText() ) . $this->msg( 'colon-separator' )->text()
 			: false;
 		// @HACK There's no way to get the display title, so instead we check that it's different.
 		$displayTitle = $this->getOutput()->getDisplayTitle();
-		$out[ 'page-title-displaytitle' ] = $displayTitle !== $this->getTitle()->getPrefixedText()
+		$out['page-title-displaytitle'] = $displayTitle !== $this->getTitle()->getPrefixedText()
 			? $displayTitle
 			: false;
 
-		$out[ 'data-subject-page' ] = $this->getTitle()->isTalkPage()
+		$out['data-subject-page'] = $this->getTitle()->isTalkPage()
 			? [
 				'class' => 'skin-wmau-subject-link',
 				'icon' => 'arrow-left',
@@ -75,16 +75,16 @@ class SkinWMAU extends SkinMustache {
 			: false;
 		$talkPage = $this->getTitle()->getTalkPageIfDefined();
 		if ( !$this->getTitle()->isTalkPage() && $talkPage && !$this->getTitle()->isMainPage() ) {
-			$out[ 'data-talk-page' ] = [
+			$out['data-talk-page'] = [
 				'text' => $this->msg( 'wmau-talk-link' )->text(),
 				'icon' => 'message-square',
 				'url' => $talkPage->getLocalURL(),
 				'class' => 'skin-wmau-talk-link',
 			];
 		}
-		$out[ 'is-talk-page' ] = $this->getTitle()->isTalkPage();
-		$out[ 'url-mainpage' ] = Title::newMainPage()->getLocalURL();
-		$out[ 'array-header-menu' ] = [];
+		$out['is-talk-page'] = $this->getTitle()->isTalkPage();
+		$out['url-mainpage'] = Title::newMainPage()->getLocalURL();
+		$out['array-header-menu'] = [];
 		foreach ( $this->getWmauConfig()['header_menu'] ?? [] as $menuConfig ) {
 			$out['array-header-menu'][] = $this->getMenuItem( $menuConfig );
 		}
@@ -99,11 +99,11 @@ class SkinWMAU extends SkinMustache {
 			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
 		$out['array-footer-menu'][] = $logInOut;
 		$out['html-footer-blurb'] = $this->msg( 'wmau-footer-blurb' )->parse();
-		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
-		$out[ 'data-logos' ] = $this->getLogosData();
-		$out[ 'html-retrievedfrom' ] = $this->printSource();
+		$out['is-user-registered'] = $this->getUser()->isRegistered();
+		$out['data-logos'] = $this->getLogosData();
+		$out['html-retrievedfrom'] = $this->printSource();
 		foreach ( $this->options['messages'] ?? [] as $message ) {
-			$out[ 'msg-' . $message ] = $this->msg( $message )->text();
+			$out['msg-' . $message] = $this->msg( $message )->text();
 		}
 		$out['html-recentchanges'] = $services->getLinkRenderer()->makeKnownLink(
 			SpecialPage::getTitleFor( 'Recentchanges' ),
@@ -119,7 +119,7 @@ class SkinWMAU extends SkinMustache {
 	 */
 	private function getMenu( $name ): array {
 		$out = [];
-		foreach ( $this->getWmauConfig()[ $name ] ?? [] as $menuConfig ) {
+		foreach ( $this->getWmauConfig()[$name] ?? [] as $menuConfig ) {
 			$out[] = $this->getMenuItem( $menuConfig );
 		}
 		return $out;
@@ -167,35 +167,35 @@ class SkinWMAU extends SkinMustache {
 		$menuItem = array_filter( $menuItem );
 		$aParams = [];
 		// title
-		if ( isset( $menuItem[ 'title' ] ) ) {
-			$aParams[ 'title' ] = $menuItem[ 'title' ];
+		if ( isset( $menuItem['title'] ) ) {
+			$aParams['title'] = $menuItem['title'];
 		}
 		// href
-		if ( isset( $menuItem[ 'url' ] ) ) {
-			$aParams[ 'href' ] = $menuItem[ 'url' ];
+		if ( isset( $menuItem['url'] ) ) {
+			$aParams['href'] = $menuItem['url'];
 		}
-		if ( isset( $menuItem[ 'page' ] ) ) {
-			$title = Title::newFromText( $menuItem[ 'page' ] );
+		if ( isset( $menuItem['page'] ) ) {
+			$title = Title::newFromText( $menuItem['page'] );
 			if ( $title ) {
-				$aParams[ 'href' ] = $title->getLinkURL();
-				if ( !isset( $menuItem[ 'title' ] ) ) {
-					$aParams[ 'title' ] = $title->getFullText();
+				$aParams['href'] = $title->getLinkURL();
+				if ( !isset( $menuItem['title'] ) ) {
+					$aParams['title'] = $title->getFullText();
 				}
 			}
 		}
 		// contents
-		$contents = $menuItem[ 'text' ] ?? $aParams[ 'title' ] ?? '';
+		$contents = $menuItem['text'] ?? $aParams['title'] ?? '';
 		// icon
-		if ( isset( $menuItem[ 'icon' ] ) ) {
+		if ( isset( $menuItem['icon'] ) ) {
 			$iconUrl = $this->getWikiFileIcon( $menuItem );
 			if ( $iconUrl ) {
 				$contents = Html::element( 'img', [ 'src' => $iconUrl ] );
 			} else {
-				$contents = $this->getFeatherIcon( $menuItem[ 'icon' ], $contents );
+				$contents = $this->getFeatherIcon( $menuItem['icon'], $contents );
 			}
 		}
 		$liParams = [
-			'class' => $menuItem[ 'class' ] ?? '',
+			'class' => $menuItem['class'] ?? '',
 		];
 		return Html::rawElement( 'li', $liParams, Html::rawElement( 'a', $aParams, $contents ) );
 	}
