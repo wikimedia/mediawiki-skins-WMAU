@@ -8,7 +8,7 @@
 <header>
 	<div class="skin-wmau-container">
 		<h1 id="sitename">
-			<a href="<?php echo $this->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ?>"
+			<a href="<?php echo $this->data['nav_urls']['mainpage']['href'] ?>"
 				class="skin-wmau-image-logo-horizontal">
 				<span><?php $this->text( 'sitename' ) ?></span>
 			</a>
