@@ -95,8 +95,8 @@ class SkinWMAU extends SkinMustache {
 		] );
 		$out['array-footer-menu'] = $this->getMenu( 'footer_menu' );
 		$logInOut = $this->getUser()->isRegistered()
-			? $this->getMenuItem( [ 'page' => 'Special:UserLogout', 'text' => 'Log out' ] )
-			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => 'Log in' ] );
+			? $this->getMenuItem( [ 'page' => 'Special:UserLogout', 'text' => $this->msg( 'logout' )->plain() ] )
+			: $this->getMenuItem( [ 'page' => 'Special:UserLogin', 'text' => $this->msg( 'login' )->plain() ] );
 		$out['array-footer-menu'][] = $logInOut;
 		$out['html-footer-blurb'] = $this->msg( 'wmau-footer-blurb' )->parse();
 		$out[ 'is-user-registered' ] = $this->getUser()->isRegistered();
