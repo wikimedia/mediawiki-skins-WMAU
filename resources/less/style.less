@@ -183,6 +183,32 @@ pre {
 	border-radius: 4px;
 }
 
+table.wikitable {
+	@table-border-color: #bddaf0;
+	border: 1px solid @table-border-color;
+	border-width: 1px 0;
+	margin: auto;
+	font-size: smaller;
+	border-collapse: collapse;
+
+	caption {
+		font-weight: bolder;
+	}
+
+	th,
+	td {
+		padding: 0.1em 0.4em;
+	}
+
+	th {
+		border-bottom: 3px double @table-border-color;
+	}
+
+	tr:nth-child( odd ) {
+		background-color: #f8fcff;
+	}
+}
+
 textarea {
 	font-family: monospace;
 }
