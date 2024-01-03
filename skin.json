@@ -2,8 +2,8 @@
 	"name": "WMAU",
 	"version": "0.6.0",
 	"author": [
-		"Caddie Brain",
-		"Sam Wilson"
+		"[https://www.caddiebrain.com Caddie Brain]",
+		"[https://samwilson.id.au Sam Wilson]"
 	],
 	"url": "https://www.mediawiki.org/wiki/Skin:WMAU",
 	"descriptionmsg": "wmau-desc",
@@ -15,14 +15,14 @@
 	},
 	"ValidSkinNames": {
 		"wmau": {
+			"displayname": "WMAU",
 			"class": "SkinWMAU",
 			"args": [ {
-				"name": "WMAU",
+				"name": "wmau",
 				"responsive": true,
 				"templateDirectory": "templates",
 				"styles": [
-					"skins.wmau",
-					"skins.wmau.images"
+					"skins.wmau"
 				],
 				"scripts": [
 					"skins.wmau.js"
@@ -54,8 +54,27 @@
 	"ResourceModules": {
 		"skins.wmau": {
 			"class": "ResourceLoaderSkinModule",
+			"features": {
+				"normalize": false,
+				"logo": false,
+				"content-media": false,
+				"content-links": false,
+				"content-links-external": false,
+				"content-parser-output": false,
+				"content-tables": false,
+				"interface": false,
+				"interface-category": false,
+				"interface-message-box": false,
+				"elements": false,
+				"legacy": false,
+				"i18n-ordered-lists": false,
+				"i18n-all-lists-margins": false,
+				"i18n-headings": false,
+				"toc": false
+			},
 			"styles": {
 				"less/style.less": {
+					"media": "all"
 				},
 				"less/print.less": {
 					"media": "print"
