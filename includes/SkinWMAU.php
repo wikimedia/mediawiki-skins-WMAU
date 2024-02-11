@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\ResourceLoader\SkinModule;
 
 /**
  * @ingroup Skins
@@ -142,7 +143,7 @@ class SkinWMAU extends SkinMustache {
 	 * @return array of logo data localised to the current language variant
 	 */
 	private function getLogosData(): array {
-		$logoData = ResourceLoaderSkinModule::getAvailableLogos( $this->getConfig() );
+		$logoData = SkinModule::getAvailableLogos( $this->getConfig() );
 		// check if the logo supports variants
 		$variantsLogos = $logoData['variants'] ?? null;
 		if ( $variantsLogos ) {
