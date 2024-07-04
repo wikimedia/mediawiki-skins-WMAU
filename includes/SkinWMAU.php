@@ -187,16 +187,19 @@ class SkinWMAU extends SkinMustache {
 		// contents
 		$contents = $menuItem['text'] ?? $aParams['title'] ?? '';
 		// icon
+		$displayBoth = isset( $menuItem['display'] ) && $menuItem['display'] === 'both';
 		if ( isset( $menuItem['icon'] ) ) {
 			$iconUrl = $this->getWikiFileIcon( $menuItem );
 			if ( $iconUrl ) {
-				$contents = Html::element( 'img', [ 'src' => $iconUrl ] );
+				$iconHtml = Html::element( 'img', [ 'src' => $iconUrl ] );
 			} else {
-				$contents = $this->getFeatherIcon( $menuItem['icon'], $contents );
+				$iconHtml = $this->getFeatherIcon( $menuItem['icon'], $contents );
 			}
+			$contents = $displayBoth ? $iconHtml . $contents : $iconHtml;
 		}
+		$displayClass = $displayBoth ? 'skin-wmau-menu-display-both' : '';
 		$liParams = [
-			'class' => $menuItem['class'] ?? '',
+			'class' => trim( $displayClass . ' ' . ( $menuItem['class'] ?? '' ) ),
 		];
 		return Html::rawElement( 'li', $liParams, Html::rawElement( 'a', $aParams, $contents ) );
 	}
