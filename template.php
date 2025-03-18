@@ -3,6 +3,9 @@
  * This is the main template.
  * @file
  */
+
+use MediaWiki\Html\Html;
+
 ?>
 
 <header>
