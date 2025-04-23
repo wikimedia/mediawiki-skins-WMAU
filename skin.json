@@ -93,7 +93,8 @@
 	"ResourceModuleSkinStyles": {
 		"wmau": {
 			"+ext.echo.styles.badge": "less/ext-echo.less",
-			"+ext.WikidataPageBanner": "less/ext-wikidata-page-banner.less"
+			"+ext.WikidataPageBanner": "less/ext-wikidata-page-banner.less",
+			"+ext.wikiEditor.realtimepreview": "less/ext-wikieditor.less"
 		}
 	},
 	"ResourceFileModulePaths": {
