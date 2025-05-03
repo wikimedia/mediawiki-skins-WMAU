@@ -1,5 +1,5 @@
-$( function () {
-	var originalWidth, originalHeight,
+$( () => {
+	let originalWidth, originalHeight,
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$searchLi = $( 'header nav .skin-wmau-search' ),
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -53,7 +53,7 @@ $( function () {
 	} );
 
 	// Show form when clicking the search icon.
-	$searchLi.find( 'a' ).on( 'click', function ( event ) {
+	$searchLi.find( 'a' ).on( 'click', ( event ) => {
 		event.preventDefault();
 		toggleSearchForm();
 		if ( searchActive ) {
@@ -63,12 +63,12 @@ $( function () {
 
 	// Handle accesskey focussing.
 	$searchInput
-		.on( 'focus', function () {
+		.on( 'focus', () => {
 			if ( !searchActive ) {
 				toggleSearchForm();
 			}
 		} )
-		.on( 'keyup', function ( event ) {
+		.on( 'keyup', ( event ) => {
 			if ( event.which === 27 ) {
 				event.preventDefault();
 				$searchInput.trigger( 'blur' );
