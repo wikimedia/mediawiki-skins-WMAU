@@ -192,9 +192,12 @@ class SkinWMAU extends SkinMustache {
 		// icon
 		$displayBoth = isset( $menuItem['display'] ) && $menuItem['display'] === 'both';
 		if ( isset( $menuItem['icon'] ) ) {
-			$iconUrl = $this->getWikiFileIcon( $menuItem );
+			$iconWidth = isset( $menuItem['icon_width'] ) && is_numeric( $menuItem['icon_width'] )
+				? intval( $menuItem['icon_width'] )
+				: 24;
+			$iconUrl = $this->getWikiFileIcon( $menuItem, $iconWidth );
 			if ( $iconUrl ) {
-				$iconHtml = Html::element( 'img', [ 'src' => $iconUrl ] );
+				$iconHtml = Html::element( 'img', [ 'src' => $iconUrl, 'width' => $iconWidth ] );
 			} else {
 				$iconHtml = $this->getFeatherIcon( $menuItem['icon'], $contents );
 			}
@@ -209,15 +212,15 @@ class SkinWMAU extends SkinMustache {
 
 	/**
 	 * @param array $menuItem The menu item details array.
+	 * @param int $iconWidth Icon width in pixels. The image may be rendered at the next size up.
 	 * @return string|null The URL to the icon thumbnail, or null if the file could not be found.
 	 */
-	private function getWikiFileIcon( array $menuItem ): ?string {
+	private function getWikiFileIcon( array $menuItem, int $iconWidth ): ?string {
 		if ( !isset( $menuItem['icon'] ) ) {
 			return null;
 		}
 		$repoGroup = $this->repoGroup;
 		$filename = $menuItem['icon'];
-		$iconWidth = $menuItem['icon_width'] ?? 24;
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'skin-WMAU-icon', $filename, $iconWidth ),
 			WANObjectCache::TTL_MONTH,
