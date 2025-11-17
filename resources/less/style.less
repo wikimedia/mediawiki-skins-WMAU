@@ -156,6 +156,14 @@ h3 {
 	line-height: 1.2;
 }
 
+.mw-heading {
+	h1,
+	h2,
+	h3 {
+		display: inline;
+	}
+}
+
 blockquote {
 	border-left: thick solid #ccc;
 	font-size: smaller;
@@ -226,13 +234,13 @@ textarea {
 	top: -3px;
 
 	a {
-		font-weight: lighter;
 		display: inline-block;
-		color: inherit;
+		color: @skin-wmau-green;
 		border: 1px solid @skin-wmau-green;
 		background-color: @skin-wmau-lightgreen;
 		border-radius: 5px;
 		padding: 3px 8px;
+		margin-left: 8px;
 	}
 
 	a:hover {
@@ -240,7 +248,8 @@ textarea {
 		background-color: #efefef;
 	}
 
-	.mw-editsection-bracket {
+	.mw-editsection-bracket,
+	.mw-editsection-divider {
 		display: none;
 	}
 }

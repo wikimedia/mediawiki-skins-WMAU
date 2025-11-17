@@ -1,6 +1,6 @@
 {
 	"name": "WMAU",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"author": [
 		"[https://www.caddiebrain.com Caddie Brain]",
 		"[https://samwilson.id.au Sam Wilson]"
@@ -21,6 +21,7 @@
 				"name": "wmau",
 				"responsive": true,
 				"templateDirectory": "templates",
+				"supportsMwHeading": true,
 				"styles": [
 					"skins.wmau"
 				],
